@@ -303,8 +303,6 @@ endif()
 include(DefinePlatformSpecific)
 add_compile_definitions(POCO_CMAKE)
 
-add_subdirectory(dependencies)
-
 # Collect the built libraries and include dirs, the will be used to create the PocoConfig.cmake file
 set(Poco_COMPONENTS "")
 
@@ -391,6 +389,8 @@ if(ENABLE_JWT)
 	set(ENABLE_CRYPTO ON CACHE BOOL "Enable Crypto" FORCE)
 	set(ENABLE_JSON ON CACHE BOOL "Enable JSON" FORCE)
 endif()
+
+add_subdirectory(dependencies)
 
 if(ENABLE_FOUNDATION)
 	add_subdirectory(Foundation)
