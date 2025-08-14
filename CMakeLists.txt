@@ -240,6 +240,9 @@ option(POCO_UNBUNDLED
 option(POCO_SQLITE_UNBUNDLED
 	"Set to OFF|ON (default is OFF) to control linking sqlite dependency as external" OFF)
 
+option(POCO_SOO
+	"Set to OFF|ON (default is ON) to control small object optimization in Poco::Foundation" ON)
+
 if (POCO_UNBUNDLED)
 	set(POCO_SQLITE_UNBUNDLED ON CACHE BOOL "Enable Unbundled SQLite" FORCE)
 endif()
@@ -491,6 +494,10 @@ endif()
 
 if(EXISTS ${PROJECT_SOURCE_DIR}/Data/PostgreSQL AND ENABLE_DATA_POSTGRESQL)
 	list(APPEND Poco_COMPONENTS "Data/PostgreSQL")
+endif()
+
+if(EXISTS ${PROJECT_SOURCE_DIR}/Data/ODBC AND ENABLE_DATA_ODBC)
+	list(APPEND Poco_COMPONENTS "Data/ODBC")
 endif()
 
 if(EXISTS ${PROJECT_SOURCE_DIR}/ActiveRecord AND ENABLE_ACTIVERECORD)
